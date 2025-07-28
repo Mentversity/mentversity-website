@@ -25,17 +25,16 @@ app.use('/api', limiter);
 // CORS configuration - FIX: Explicitly set multiple allowed origins
 app.use(cors({
   origin: [
-    '[https://www.mentversity.com](https://www.mentversity.com)', // Your primary deployed frontend URL
-    '[https://mentversity.com](https://mentversity.com)',    // Non-www version
-    'http://localhost:3000',      // Common Next.js development port
-    'http://localhost:5000',      // If your frontend might run on backend port during local dev
-    // Add any other specific development or staging URLs here, e.g.:
-    // '[https://dev.mentversity.com](https://dev.mentversity.com)',
-    // '[https://staging.mentversity.com](https://staging.mentversity.com)',
+    'https://www.mentversity.com',
+    'https://mentversity.com',
+    'http://localhost:3000',
+    'http://localhost:5000',
+    // Add more environments here if needed
+    // 'https://dev.mentversity.com',
+    // 'https://staging.mentversity.com',
   ],
   credentials: true
 }));
-
 // Body parser middleware
 // IMPORTANT: This will parse JSON and URL-encoded bodies for most routes.
 // The /api/payments/webhook route specifically uses bodyParser.raw() before its handler.
