@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   title: 'Mentversity - Learn, Grow, Succeed',
   description:
     'Mentversity: Your platform for mastering web development, data science, AI/ML, and more. Learn from industry experts, build real-world projects, and accelerate your career.',
+    icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+  },
   keywords: [
     'mentversity',
     'online courses',
@@ -46,10 +50,7 @@ export const metadata: Metadata = {
     images: ['https://www.mentversity.com/twitter-image.jpg'], // ✅ Real Twitter image
     site: '@mentversity', // ✅ Optional: your Twitter handle
     creator: '@mentversity', // Optional: Twitter handle of author/brand
-  },
-  icons: {
-    icon: '/favicon.ico', // ✅ This is how to include favicon
-  },
+  }
 };
 
 export default function RootLayout({
