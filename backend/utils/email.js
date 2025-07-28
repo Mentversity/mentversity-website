@@ -82,6 +82,49 @@ class Email {
       console.error('Company email not sent: No valid transport available.');
     }
   }
+  async sendCourseEnrollment(courseTitle, coursePrice, studentEmail, studentName) {
+    // We create a new Email instance here because the 'to' and 'firstName'
+    // for the student email need to be explicitly set for this specific send.
+    // The 'this' context of the original Email instance might be for the company.
+    const studentUser = { email: studentEmail, name: studentName };
+    await new Email(studentUser).send(
+      'courseEnrollment', // Template name (courseEnrollment.pug)
+      `Congratulations! You're Enrolled in ${courseTitle}!`,
+      {
+        courseTitle,
+        coursePrice,
+      }
+    );
+  }
+    async sendCompanyCourseEnrollmentNotification(courseTitle, coursePrice, studentName, studentEmail) {
+    // This email goes to the company
+    const companyEmail = config.companyEmail;
+    const companyEmailOptions = {
+      from: this.from,
+      to: companyEmail,
+      subject: `New Course Enrollment: ${courseTitle}`,
+      html: pug.renderFile(`${__dirname}/../views/email/companyCourseEnrollment.pug`, {
+        courseTitle,
+        coursePrice,
+        studentName,
+        studentEmail,
+      }),
+      text: htmlToText(pug.renderFile(`${__dirname}/../views/email/companyCourseEnrollment.pug`, {
+        courseTitle,
+        coursePrice,
+        studentName,
+        studentEmail,
+      })),
+    };
+
+    const transporter = this.newTransport();
+    if (transporter) {
+      await transporter.sendMail(companyEmailOptions);
+    } else {
+      console.error('Company enrollment notification email not sent: No valid transport available.');
+    }
+  }
+  
 }
 
 module.exports = Email;

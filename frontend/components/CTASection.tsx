@@ -23,7 +23,7 @@ const CTASection = () => {
             </Link>
             {/* Secondary CTA Button */}
             <Link 
-              href="#courses" 
+              href="/best-courses" 
               className="bg-transparent border border-white text-white px-10 py-4 rounded-xl font-semibold text-lg
                          transition-all duration-300 ease-in-out hover:scale-[1.03] hover:shadow-neon hover:border-[#00FFFF]" // Outlined, hover glow, border-aqua on hover
             >

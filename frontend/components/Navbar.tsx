@@ -34,6 +34,7 @@ const Navbar = () => {
         });
 
         const {data} = await response.json();
+        console.log('User data:', data.user.photoURL); // Log user photo URL for debugging
 
         if (response.ok) {
           setUser(data.user); // Assuming backend returns user object directly

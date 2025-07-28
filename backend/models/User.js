@@ -1,3 +1,4 @@
+// backend/models/User.js
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const validator = require('validator');
@@ -5,85 +6,89 @@ const validator = require('validator');
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'Please provide your name'],
+    required: [true, 'Please tell us your name!'],
     trim: true,
-    maxlength: [50, 'Name cannot be more than 50 characters']
   },
   email: {
     type: String,
     required: [true, 'Please provide your email'],
     unique: true,
     lowercase: true,
-    validate: [validator.isEmail, 'Please provide a valid email']
+    validate: [validator.isEmail, 'Please provide a valid email'],
   },
   password: {
     type: String,
-    minlength: [8, 'Password must be at least 8 characters'],
-    select: false // Don't include password in queries by default
+    required: [true, 'Please provide a password'],
+    minlength: 8,
+    select: false,
   },
-  googleId: {
+  passwordConfirm: {
     type: String,
-    sparse: true // Allows multiple null values but ensures uniqueness for non-null values
+    validate: {
+      validator: function (el) {
+        return el === this.password;
+      },
+      message: 'Passwords are not the same!',
+    },
   },
-  photoURL: {
-    type: String,
-    validate: [validator.isURL, 'Please provide a valid photo URL']
-  },
+  photoURL: String,
   role: {
     type: String,
-    enum: ['student', 'instructor', 'admin'],
-    default: 'student'
+    enum: ['user', 'admin', 'instructor'],
+    default: 'user',
   },
-  isEmailVerified: {
+  passwordChangedAt: Date,
+  passwordResetToken: String,
+  passwordResetExpires: Date,
+  active: {
     type: Boolean,
-    default: false
-  },
-  lastLogin: {
-    type: Date,
-    default: Date.now
+    default: true,
+    select: false,
   },
   createdAt: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
-  updatedAt: {
-    type: Date,
-    default: Date.now
-  }
-}, {
-  timestamps: true,
-  toJSON: { virtuals: true },
-  toObject: { virtuals: true }
+  lastLogin: Date,
+
+  enrolledCourses: [
+    {
+      type: String, // Store course.id (e.g., "c1", "c2") as a string
+    },
+  ],
 });
 
-// Indexes for better performance
-userSchema.index({ email: 1 });
-userSchema.index({ googleId: 1 });
-
-// Pre-save middleware to hash password
-userSchema.pre('save', async function(next) {
-  // Only run if password is modified
+userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
-  
-  // Only hash if password exists (not for Google OAuth users)
-  if (this.password) {
-    this.password = await bcrypt.hash(this.password, 12);
-  }
-  
+  this.password = await bcrypt.hash(this.password, 12);
+  this.passwordConfirm = undefined;
   next();
 });
 
-// Instance method to check password
-userSchema.methods.correctPassword = async function(candidatePassword, userPassword) {
+userSchema.pre('save', function (next) {
+  if (!this.isModified('password') || this.isNew) return next();
+  this.passwordChangedAt = Date.now() - 1000;
+  next();
+});
+
+userSchema.methods.correctPassword = async function (
+  candidatePassword,
+  userPassword
+) {
   return await bcrypt.compare(candidatePassword, userPassword);
 };
 
-// Remove sensitive data from JSON output
-userSchema.methods.toJSON = function() {
-  const userObject = this.toObject();
-  delete userObject.password;
-  delete userObject.__v;
-  return userObject;
+userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const changedTimestamp = parseInt(
+      this.passwordChangedAt.getTime() / 1000,
+      10
+    );
+    return JWTTimestamp < changedTimestamp;
+  }
+  return false;
 };
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;

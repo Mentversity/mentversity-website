@@ -28,14 +28,14 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               {/* Primary CTA Button */}
               <Link
-                href="#courses"
+                href="/best-courses"
                 className="bg-[#00C896] text-black px-8 py-4 rounded-xl font-bold text-lg
                            transition-all duration-300 ease-in-out hover:scale-[1.03] hover:shadow-neon
                            flex items-center justify-center min-w-[200px]"
               >
                 Browse Courses <ArrowRight size={20} className="ml-3" />
               </Link>
-              {/* Secondary CTA Button */}
+              {/* Secondary CTA Button
               <button
                 className="flex items-center justify-center gap-3 px-8 py-4 rounded-xl border border-white text-white font-semibold text-lg
                            transition-all duration-300 ease-in-out hover:scale-[1.03] hover:shadow-neon hover:border-[#00FFFF]
@@ -43,7 +43,7 @@ const Hero = () => {
               >
                 <Play size={20} />
                 Watch Demo
-              </button>
+              </button> */}
             </div>
 
             {/* Stats */}

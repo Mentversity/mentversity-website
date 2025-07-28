@@ -16,7 +16,7 @@ const Footer = () => {
             <p className="text-gray-300 max-w-sm leading-relaxed font-medium"> {/* Adjusted text color, line-height, font-weight */}
               Empowering learners worldwide with cutting-edge skills and career opportunities.
             </p>
-            <div className="flex space-x-5 mt-6"> {/* Increased space */}
+            {/* <div className="flex space-x-5 mt-6"> 
               <a 
                 href="#" 
                 className="text-gray-400 hover:text-[#00FFFF] transition-colors duration-300
@@ -49,7 +49,7 @@ const Footer = () => {
               >
                 <Instagram size={20} />
               </a>
-            </div>
+            </div> */}
           </div>
 
           {/* Quick Links */}
@@ -62,16 +62,16 @@ const Footer = () => {
           </div>
 
           {/* Support */}
-          <div>
-            <h3 className="text-white font-['Poppins',_sans-serif] font-semibold text-xl mb-6">Support</h3> {/* Larger heading, Poppins font */}
-            <ul className="space-y-3"> {/* Increased space */}
+          {/* <div>
+            <h3 className="text-white font-['Poppins',_sans-serif] font-semibold text-xl mb-6">Support</h3> 
+            <ul className="space-y-3"> 
               <li><Link href="#" className="text-gray-300 hover:text-[#00C896] transition-colors duration-200 text-base">Help Center</Link></li>
               <li><Link href="#" className="text-gray-300 hover:text-[#00C896] transition-colors duration-200 text-base">Student Portal</Link></li>
               <li><Link href="#" className="text-gray-300 hover:text-[#00C896] transition-colors duration-200 text-base">Career Services</Link></li>
               <li><Link href="#" className="text-gray-300 hover:text-[#00C896] transition-colors duration-200 text-base">Mentorship</Link></li>
               <li><Link href="#" className="text-gray-300 hover:text-[#00C896] transition-colors duration-200 text-base">Resources</Link></li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Contact Info */}
           <div>
@@ -103,15 +103,15 @@ const Footer = () => {
             © {new Date().getFullYear()} Mentversity. All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center space-x-6 mt-4 md:mt-0"> {/* Flex-wrap for small screens */}
-            <Link href="#" className="text-gray-400 hover:text-[#00C896] transition-colors duration-200">
+            <Link href="/privacy-policy" className="text-gray-400 hover:text-[#00C896] transition-colors duration-200">
               Privacy Policy
             </Link>
-            <Link href="#" className="text-gray-400 hover:text-[#00C896] transition-colors duration-200">
+            {/* <Link href="#" className="text-gray-400 hover:text-[#00C896] transition-colors duration-200">
               Terms of Service
             </Link>
             <Link href="#" className="text-gray-400 hover:text-[#00C896] transition-colors duration-200">
               Cookie Policy
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

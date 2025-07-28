@@ -19,7 +19,6 @@ const submitContactForm = catchAsync(async (req, res) => {
   }
 
   const { name, email, subject, message } = req.body;
-
   try {
     // 1. Send confirmation email to the user
     const userForConfirmation = { name, email };

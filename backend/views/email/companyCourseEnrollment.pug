@@ -1,0 +1,21 @@
+extends baseEmail.pug
+
+block content
+  h2 New Course Enrollment!
+  p A new student has successfully enrolled in a course.
+  .info-box
+    p
+      strong Course: 
+      span.highlight #{courseTitle}
+    p
+      strong Price: 
+      span.highlight ₹#{coursePrice.toLocaleString('en-IN')}
+    p
+      strong Student Name: 
+      span.highlight #{studentName}
+    p
+      strong Student Email: 
+      span.highlight #{studentEmail}
+  p Please ensure the student has access to the course materials.
+  p Best regards,
+  p Mentversity System

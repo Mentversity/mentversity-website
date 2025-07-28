@@ -32,7 +32,7 @@ const ConnectWithUs = () => {
             {/* Right Column: Contact Info & Social Links */}
             <div className="space-y-12"> {/* Space between info and social */}
               <ContactInfo />
-              <SocialLinks />
+              {/* <SocialLinks /> */}
             </div>
           </div>
         </div>
