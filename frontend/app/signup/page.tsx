@@ -36,7 +36,7 @@ export default function SignUp() {
     agreeToTerms: false // Frontend validation only
   })
 
-  const BACKEND_URL = 'http://localhost:5000'; // Your backend URL
+  const BACKEND_URL = `${process.env.NEXT_PUBLIC_API_URL}`; // Your backend URL
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

@@ -23,7 +23,7 @@ const CourseDetailPage = () => {
   const [paymentStatus, setPaymentStatus] = useState<{ type: string; message: string } | null>(null);
   const [notLoggedIn, setNotLoggedIn] = useState(true); // New state to track login status
 
-  const BACKEND_URL = 'http://localhost:5000'; // Your backend URL
+  const BACKEND_URL = `${process.env.NEXT_PUBLIC_API_URL}`; // Your backend URL
 
   // Load Razorpay script dynamically and check login status on mount
   useEffect(() => {

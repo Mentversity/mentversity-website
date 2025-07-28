@@ -15,7 +15,7 @@ const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('profile'); // 'profile' or 'my-courses'
 
   const router = useRouter();
-  const BACKEND_URL = 'http://localhost:5000'; // Your backend URL
+  const BACKEND_URL = `${process.env.NEXT_PUBLIC_API_URL}`; // Your backend URL
 
   useEffect(() => {
     const fetchUserProfile = async () => {
