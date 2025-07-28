@@ -7,6 +7,7 @@ const globalErrorHandler = require('./middleware/errorMiddleware');
 // Import routes
 const authRoutes = require('./routes/authRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
+const contactRoutes = require('./routes/contactRoutes'); // NEW: Import contact routes
 
 const app = express();
 
@@ -21,28 +22,30 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 
-// CORS configuration
+// CORS configuration - FIX: Explicitly set multiple allowed origins
 app.use(cors({
-  // allow all origins for development
   origin: [
-    'https://www.mentversity.com', // Your primary deployed frontend URL
-    'https://mentversity.com',    // Non-www version
+    '[https://www.mentversity.com](https://www.mentversity.com)', // Your primary deployed frontend URL
+    '[https://mentversity.com](https://mentversity.com)',    // Non-www version
     'http://localhost:3000',      // Common Next.js development port
     'http://localhost:5000',      // If your frontend might run on backend port during local dev
     // Add any other specific development or staging URLs here, e.g.:
-    // 'https://dev.mentversity.com',
-    // 'https://staging.mentversity.com',
+    // '[https://dev.mentversity.com](https://dev.mentversity.com)',
+    // '[https://staging.mentversity.com](https://staging.mentversity.com)',
   ],
   credentials: true
 }));
 
 // Body parser middleware
+// IMPORTANT: This will parse JSON and URL-encoded bodies for most routes.
+// The /api/payments/webhook route specifically uses bodyParser.raw() before its handler.
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/payments', paymentRoutes);
+app.use('/api/contact', contactRoutes); // NEW: Add contact routes
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

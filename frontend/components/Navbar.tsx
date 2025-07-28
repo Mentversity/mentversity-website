@@ -13,7 +13,7 @@ const Navbar = () => {
   const dropdownRef = useRef(null) // Ref for dropdown to handle clicks outside
 
   const router = useRouter()
-  const BACKEND_URL = 'http://localhost:5000'; // Your backend URL
+  const BACKEND_URL = `${process.env.NEXT_PUBLIC_API_URL}`; // Your backend URL
 
   // Effect to fetch user profile on component mount
   useEffect(() => {

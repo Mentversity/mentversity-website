@@ -1,0 +1,21 @@
+extends baseEmail.pug
+
+block content
+  h2 New Contact Form Submission!
+  p You have received a new message from your Mentversity contact form.
+  .info-box
+    p
+      strong Name: 
+      span.highlight #{contactName}
+    p
+      strong Email: 
+      span.highlight #{contactEmail}
+    p
+      strong Subject: 
+      span.highlight #{contactSubject}
+    p
+      strong Message: 
+      | #{contactMessage}
+  p Please respond to this inquiry promptly.
+  p Best regards,
+  p Mentversity System

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import { User, Mail, MessageSquare, Send } from 'lucide-react';
+import { User, Mail, MessageSquare, Send, Loader2 } from 'lucide-react'; // Added Loader2 for loading state
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -11,44 +11,48 @@ const ContactForm = () => {
     message: ''
   });
   const [statusMessage, setStatusMessage] = useState({ type: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false); // New state for submission loading
+
+  const BACKEND_URL = `${process.env.NEXT_PUBLIC_API_URL}`; // Your backend URL
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => { // Made async
     e.preventDefault();
     setStatusMessage({ type: '', message: '' }); // Clear previous messages
+    setIsSubmitting(true); // Start loading
 
     // Basic validation
     if (!formData.name || !formData.email || !formData.subject || !formData.message) {
       setStatusMessage({ type: 'error', message: 'Please fill in all fields.' });
+      setIsSubmitting(false); // Stop loading
       return;
     }
 
-    // Simulate form submission
-    console.log('Form submitted:', formData);
-    setStatusMessage({ type: 'success', message: 'Your message has been sent successfully!' });
-    setFormData({ name: '', email: '', subject: '', message: '' }); // Clear form
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/contact`, { // Send to your backend
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-    // In a real application, you would send this data to an API endpoint
-    // try {
-    //   const response = await fetch('/api/contact', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(formData),
-    //   });
-    //   if (response.ok) {
-    //     setStatusMessage({ type: 'success', message: 'Your message has been sent successfully!' });
-    //     setFormData({ name: '', email: '', subject: '', message: '' });
-    //   } else {
-    //     const errorData = await response.json();
-    //     setStatusMessage({ type: 'error', message: errorData.message || 'Failed to send message.' });
-    //   }
-    // } catch (error) {
-    //   setStatusMessage({ type: 'error', message: 'An unexpected error occurred.' });
-    // }
+      const data = await response.json(); // Parse response
+
+      if (response.ok) {
+        setStatusMessage({ type: 'success', message: data.message || 'Your message has been sent successfully!' });
+        setFormData({ name: '', email: '', subject: '', message: '' }); // Clear form
+      } else {
+        setStatusMessage({ type: 'error', message: data.message || 'Failed to send message.' });
+      }
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
+      setStatusMessage({ type: 'error', message: 'An unexpected error occurred. Please try again.' });
+    } finally {
+      setIsSubmitting(false); // Stop loading
+    }
   };
 
   return (
@@ -150,9 +154,18 @@ const ContactForm = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-[#00C896] text-black font-bold text-lg py-3 px-4 rounded-xl transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-neon focus:outline-none focus:ring-2 focus:ring-[#00C896] focus:ring-offset-2 focus:ring-offset-[#0B132B] flex items-center justify-center gap-2"
+          disabled={isSubmitting} // Disable button while submitting
+          className="w-full bg-[#00C896] text-black font-bold text-lg py-3 px-4 rounded-xl transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-neon focus:outline-none focus:ring-2 focus:ring-[#00C896] focus:ring-offset-2 focus:ring-offset-[#0B132B] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Send Message <Send size={20} />
+          {isSubmitting ? (
+            <>
+              <Loader2 className="animate-spin" size={20} /> Sending...
+            </>
+          ) : (
+            <>
+              Send Message <Send size={20} />
+            </>
+          )}
         </button>
       </form>
     </div>
