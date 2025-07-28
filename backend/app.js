@@ -3,12 +3,10 @@ const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const globalErrorHandler = require('./middleware/errorMiddleware');
-const config = require('./config'); // Assuming config.js holds environment variables
 
 // Import routes
 const authRoutes = require('./routes/authRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
-const courseRoutes = require('./routes/courseRoutes'); // Ensure this is imported if you added it
 
 const app = express();
 
@@ -23,10 +21,9 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 
-// CORS configuration - FIX: Explicitly set multiple allowed origins
-// When credentials: true, origin cannot be '*'.
-// You must specify the exact origin(s) of your frontend application.
+// CORS configuration
 app.use(cors({
+  // allow all origins for development
   origin: [
     'https://www.mentversity.com', // Your primary deployed frontend URL
     'https://mentversity.com',    // Non-www version
@@ -46,7 +43,6 @@ app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/payments', paymentRoutes);
-app.use('/api/courses', courseRoutes); // Make sure this line is present if you've added course routes
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
@@ -60,8 +56,8 @@ app.get('/api/health', (req, res) => {
 // Handle undefined routes
 app.all('*', (req, res, next) => {
   const err = new Error(`Can't find ${req.originalUrl} on this server!`);
-  (err as any).status = 'fail';
-  (err as any).statusCode = 404;
+  err.status = 'fail';
+  err.statusCode = 404;
   next(err);
 });
 
