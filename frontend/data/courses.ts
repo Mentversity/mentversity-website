@@ -22,7 +22,7 @@ export const ALL_COURSES = [
     },
     rating: 4.8,
     reviews: 1250,
-    price: 1,
+    price: 5999,
     originalPrice: Math.round(5999 / 0.4), // Calculated: 5999 / (1 - 0.60) = 14997.5 -> 14998
     image:
       "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
