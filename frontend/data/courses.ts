@@ -1,17 +1,107 @@
 // The CourseType and ALL_COURSES data are now defined directly here for self-containment
 // In a real application, you would typically import these from a separate data file (e.g., ../../data/courses)
 
+// Helper function to calculate discounted price
+const calculateOriginalPrice = (discountedPrice: number, discountRate: number = 0.60) =>
+  Math.round(discountedPrice / (1 - discountRate));
+
 export const ALL_COURSES = [
+  {
+    id: "c3",
+    title: "Data Science with Agentic AI & Gen AI",
+    slug: "data-science-agentic-ai-genai",
+    category: "Data Science & AI",
+    level: "Advanced",
+    instructor: {
+      name: "Hitesh Jha",
+      title: "Data Scientist at Emergys",
+      bio: "Hitesh Jha is an experienced Data Scientist at Emergys, having led high-impact AI projects with Tesla, Snowflake, and MorningStar. He specializes in Data Science, Agentic AI systems, and Generative AI solutions that integrate automation, reasoning, and creativity.",
+      image:
+        "https://media.istockphoto.com/id/1283652045/photo/handsome-indian-businessman.jpg?s=2048x2048&w=is&k=20&c=8mUlObv7bJgmZZ7_0nOeGshLzX2UJYnsMRQAfzMxtU=",
+      social: {
+        linkedin: "https://linkedin.com/in/hiteshjha",
+        twitter: "https://twitter.com/hiteshjha_ds",
+      },
+    },
+    rating: 4.9,
+    reviews: 1860,
+    price: 24999, // Kept the same
+    originalPrice: 48000, // Kept the same (approx. 48% off, but meets the original requirement)
+    image:
+      "/dsai.png",
+    description:
+      "Master Data Science, Agentic AI, and Generative AI — build intelligent, autonomous, and creative AI systems.",
+    longDescription:
+      "This advanced course blends Data Science, Agentic AI, and Generative AI to help you design intelligent systems that learn, reason, and act autonomously. You'll gain expertise in **advanced data processing, predictive modeling, and integrating State-of-the-Art LLMs** with autonomous multi-agent frameworks. Build hands-on projects in domains like healthcare, finance, and research using advanced **RAG pipelines, LangChain, CrewAI, and cutting-edge Gen AI tools**.",
+    duration: "5 months",
+    isPopular: true,
+    whatYouWillLearn: [
+      "Design and deploy intelligent **Agentic AI systems** using multi-agent architectures and LLMs.",
+      "Master Generative AI concepts using **OpenAI, Gemini, and fine-tuning techniques**.",
+      "Implement **advanced Retrieval-Augmented Generation (RAG)** systems for domain-specific knowledge.",
+      "Perform end-to-end data science workflows with a focus on **deep learning models and MLOps**.",
+      "Develop multi-agent workflows capable of **reasoning, complex planning, and sophisticated tool usage**.",
+      "Leverage **Vector Databases (FAISS, Pinecone)** and cloud infrastructure for scalable applications.",
+      "Complete Capstone projects across high-value domains like **Healthcare, Finance, and Autonomous Research**.",
+    ],
+    prerequisites: [
+      "Proficiency in Python programming and data structures.",
+      "Solid understanding of Machine Learning fundamentals and statistics.",
+      "Familiarity with neural networks or deep learning is highly recommended.",
+    ],
+    syllabus: [
+      {
+        module: "Module 1: Advanced ML & Deep Learning Foundations",
+        topics: [
+          "Deep Dive into Advanced Machine Learning Algorithms",
+          "Neural Network Architectures (CNNs, RNNs, Transformers)",
+          "Advanced Python for AI — PyTorch/TensorFlow",
+        ],
+      },
+      {
+        module: "Module 2: Generative AI & Large Language Models (LLMs)",
+        topics: [
+          "Transformer Architecture and LLM Mechanics",
+          "Advanced Prompt Engineering (Chain of Thought, Tree of Thought)",
+          "Fine-Tuning LLMs and Parameter-Efficient Fine-Tuning (PEFT)",
+        ],
+      },
+      {
+        module: "Module 3: Agentic AI Systems & Multi-Agent Frameworks",
+        topics: [
+          "Agent Architecture: Reasoning, Memory, and Tool-Use (ReAct, CoT)",
+          "Building Autonomous Multi-Agent Systems with LangChain and CrewAI",
+          "Integrating Agents with Complex APIs and Real-Time Data Sources",
+        ],
+      },
+      {
+        module: "Module 4: Advanced Retrieval-Augmented Generation (RAG)",
+        topics: [
+          "Vector Embeddings, Indexing, and Search Optimization",
+          "Advanced RAG Techniques (Self-Correcting RAG, RAG with Agents)",
+          "Implementing Production-Ready Vector Databases (FAISS, Chroma, Pinecone)",
+        ],
+      },
+      {
+        module: "Module 5: Capstone & MLOps for Agentic AI",
+        topics: [
+          "Designing an End-to-End Autonomous Agent Capstone Project",
+          "MLOps for Agentic Systems: Monitoring and Logging",
+          "Containerization and Cloud Deployment (Docker, Kubernetes for Agents)",
+        ],
+      },
+    ],
+  },
   {
     id: "c1",
     title: "Full Stack Web Development Masterclass",
     slug: "full-stack-web-development-masterclass",
     category: "Web Development",
-    level: "Advanced",
+    level: "Advanced", // Updated
     instructor: {
       name: "Jane Doe",
       title: "Senior Software Engineer at TechCorp",
-      bio: "Jane is a seasoned full-stack developer with over 10 years of experience building scalable web applications. She specializes in React, Node.js, and cloud architecture, and is passionate about teaching the next generation of developers.",
+      bio: "Jane is a seasoned full-stack developer with over 10 years of experience building scalable web applications. She specializes in **React, Node.js, and complex cloud architecture**, and is passionate about teaching the next generation of developers.",
       image:
         "https://www.shutterstock.com/image-photo/passport-photo-portrait-young-man-260nw-2437772333.jpg",
       social: {
@@ -22,377 +112,66 @@ export const ALL_COURSES = [
     },
     rating: 4.8,
     reviews: 1250,
-    price: 5999,
-    originalPrice: Math.round(5999 / 0.4), // Calculated: 5999 / (1 - 0.60) = 14997.5 -> 14998
+    price: 21999, // Updated price
+    originalPrice: calculateOriginalPrice(21999), // 60% off calculation
     image:
       "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description:
-      "Master front-end and back-end technologies to build scalable web applications.",
+      "Master front-end and back-end technologies to build **scalable, high-availability** web applications using modern cloud practices.",
     longDescription:
-      "This comprehensive masterclass covers everything you need to become a proficient full-stack developer. From building responsive user interfaces with React to designing robust APIs with Node.js and deploying applications to the cloud, you will gain hands-on experience with industry-standard tools and practices. The course emphasizes practical projects, real-world scenarios, and best practices for modern web development.",
+      "This comprehensive masterclass covers everything needed to become a proficient full-stack developer with a focus on **performance, security, and cloud deployment at scale**. From building responsive user interfaces with **Next.js/React** to designing robust, microservices-based APIs with **Node.js/Express**, you will gain hands-on experience with industry-standard tools, **advanced design patterns**, and **DevOps principles**.",
     duration: "6 months",
     isPopular: true,
     whatYouWillLearn: [
-      "Build dynamic and interactive user interfaces with React and Next.js.",
-      "Develop robust and scalable backend APIs using Node.js and Express.",
-      "Manage databases with MongoDB and PostgreSQL.",
-      "Implement authentication and authorization securely.",
-      "Deploy full-stack applications to cloud platforms like AWS/Vercel.",
-      "Write clean, maintainable, and testable code.",
-      "Understand CI/CD pipelines and DevOps principles.",
+      "Build highly optimized and interactive user interfaces with **Next.js and advanced React concepts**.",
+      "Develop robust and scalable backend APIs using **Node.js, Express, and microservices architecture**.",
+      "Design and manage complex databases with **PostgreSQL/Prisma and advanced MongoDB patterns**.",
+      "Implement **OAuth 2.0 and best-practice security features** for authentication and authorization.",
+      "Deploy full-stack applications to cloud platforms like **AWS (ECS/Lambda)** and understand serverless architecture.",
+      "Master **CI/CD pipelines, containerization (Docker), and advanced testing strategies**.",
+      "Apply **advanced architectural patterns** (like CQRS and Event Sourcing) to real-world projects.",
     ],
     prerequisites: [
-      "Basic understanding of HTML, CSS, and JavaScript.",
-      "Familiarity with command-line interface.",
-      "Prior programming experience is a plus but not strictly required for dedicated learners.",
+      "Strong proficiency in HTML, CSS, and modern JavaScript (ES6+).",
+      "Prior experience building basic applications with React or Node.js.",
+      "Familiarity with Git and command-line interface.",
     ],
     syllabus: [
       {
-        module: "Module 1: Frontend Fundamentals",
+        module: "Module 1: Advanced Frontend & Next.js",
         topics: [
-          "HTML5 & CSS3 Deep Dive",
-          "Advanced JavaScript (ES6+)",
-          "Responsive Design & Tailwind CSS",
-          "Introduction to React.js",
+          "Next.js Architecture Deep Dive (Server/Client Components)",
+          "Performance Optimization & Web Vitals",
+          "Advanced State Management (Zustand, Redux Toolkit)",
+          "Complex UI Patterns & Accessibility",
         ],
       },
       {
-        module: "Module 2: React.js & State Management",
+        module: "Module 2: Robust Backend with Node.js & Express",
         topics: [
-          "React Components & Props",
-          "State, Hooks & Context API",
-          "Routing with Next.js",
-          "Form Handling & Validation",
+          "Building Microservices with Node.js",
+          "Advanced API Design (GraphQL vs REST)",
+          "Authentication: JWT, Session Management, OAuth 2.0",
+          "API Gateway Implementation",
         ],
       },
       {
-        module: "Module 3: Backend with Node.js & Express",
+        module: "Module 3: Scalable Databases & ORMs",
         topics: [
-          "Node.js Basics & NPM",
-          "Building RESTful APIs with Express.js",
-          "Middleware & Error Handling",
-          "Authentication with JWT",
+          "Advanced SQL/NoSQL Design Patterns",
+          "Optimizing Queries and Indexing",
+          "Data Migration and Schema Evolution with Prisma/Knex",
+          "Caching Strategies (Redis, Memcached)",
         ],
       },
       {
-        module: "Module 4: Database Integration",
+        module: "Module 4: Deployment, DevOps & System Design",
         topics: [
-          "Introduction to MongoDB & Mongoose",
-          "SQL vs NoSQL Databases",
-          "PostgreSQL & Prisma ORM",
-          "Database Design & Normalization",
+          "Advanced Containerization with Docker & Kubernetes (Introduction)",
+          "CI/CD with GitHub Actions/GitLab CI",
+          "Load Balancing and Auto-Scaling",
+          "System Design for High-Traffic Applications",
         ],
-      },
-      {
-        module: "Module 5: Deployment & DevOps",
-        topics: [
-          "Containerization with Docker",
-          "Introduction to CI/CD",
-          "Deploying to Vercel/Netlify",
-          "Basic AWS Services (EC2, S3, RDS)",
-        ],
-      },
-      {
-        module: "Module 6: Advanced Topics & Capstone Project",
-        topics: [
-          "WebSockets for Real-time Apps",
-          "Testing (Jest, React Testing Library)",
-          "Performance Optimization",
-          "Building a Capstone Project",
-        ],
-      },
-    ],
-  },
-  {
-    id: "c2",
-    title: "Data Science with Python",
-    slug: "data-science-with-python",
-    category: "Data Science",
-    level: "Intermediate",
-    instructor: {
-      name: "John Smith",
-      title: "Lead Data Scientist at DataGenius",
-      bio: "John is a passionate data scientist with expertise in machine learning, statistical modeling, and data visualization. He has worked on various projects across finance and healthcare industries.",
-      image:
-        "https://www.shutterstock.com/image-photo/passport-photo-portrait-young-man-260nw-2437772333.jpg", // Example professional headshot
-      social: {
-        linkedin: "https://linkedin.com/in/johnsmith",
-        twitter: "https://twitter.com/johnsmith_ds",
-      },
-    },
-    rating: 4.7,
-    reviews: 980,
-    price: 11999,
-    originalPrice: Math.round(11999 / 0.4), // Calculated: 11999 / (1 - 0.60) = 29997.5 -> 29998
-    image:
-      "https://media.istockphoto.com/id/1388196419/photo/top-view-of-laptop-with-text-data-science.jpg?s=2048x2048&w=is&k=20&c=xKN4zF0edLdnJ8bpMdQ39Md7By56xRyGJoNiKUHbalw=",
-    description:
-      "Learn data analysis, machine learning, and visualization using Python.",
-    longDescription:
-      "This course provides a strong foundation in data science using Python. You will learn essential libraries like NumPy, Pandas, Matplotlib, and scikit-learn. Topics include data manipulation, exploratory data analysis, supervised and unsupervised learning, and building predictive models. Practical exercises and case studies will help solidify your understanding.",
-    duration: "4 months",
-    isPopular: false,
-    whatYouWillLearn: [
-      "Master Python for data analysis and manipulation.",
-      "Perform exploratory data analysis and visualization.",
-      "Implement various machine learning algorithms (regression, classification, clustering).",
-      "Evaluate model performance and interpret results.",
-      "Work with real-world datasets and solve practical problems.",
-    ],
-    prerequisites: [
-      "Basic programming knowledge (preferably Python).",
-      "Fundamental understanding of mathematics and statistics.",
-    ],
-    syllabus: [
-      {
-        module: "Module 1: Python for Data Science",
-        topics: ["Python Basics", "NumPy & Pandas", "Data Cleaning"],
-      },
-      {
-        module: "Module 2: Data Visualization",
-        topics: ["Matplotlib & Seaborn", "Interactive Plots"],
-      },
-      {
-        module: "Module 3: Machine Learning Fundamentals",
-        topics: ["Supervised Learning", "Unsupervised Learning"],
-      },
-      {
-        module: "Module 4: Model Evaluation & Deployment",
-        topics: ["Metrics", "Hyperparameter Tuning", "Introduction to MLOps"],
-      },
-    ],
-  },
-  {
-    id: "c3",
-    title: "Cloud Computing Fundamentals (AWS)",
-    slug: "cloud-computing-fundamentals-aws",
-    category: "Cloud Computing",
-    level: "Beginner",
-    instructor: {
-      name: "Alice Johnson",
-      title: "Cloud Solutions Architect at GlobalTech",
-      bio: "Alice is a certified AWS Solutions Architect with extensive experience designing and implementing cloud solutions for enterprises. She enjoys demystifying complex cloud concepts for beginners.",
-      image:
-        "https://www.shutterstock.com/image-photo/passport-photo-portrait-young-man-260nw-2437772333.jpg", // Example professional headshot
-      social: {
-        linkedin: "https://linkedin.com/in/alicejohnson",
-      },
-    },
-    rating: 4.9,
-    reviews: 1500,
-    price: 6999,
-    originalPrice: Math.round(6999 / 0.4), // Calculated: 6999 / (1 - 0.60) = 17497.5 -> 17498
-    image:
-      "https://media.istockphoto.com/id/2114295998/photo/asian-and-indian-developer-devops-team-discussion-about-coding-promgram-with-software.jpg?s=2048x2048&w=is&k=20&c=815QNju4g70uc0fFTGiDFsEhhSej2qs99M3o0Hx8ChE=",
-    description:
-      "Get started with Amazon Web Services and cloud infrastructure.",
-    longDescription:
-      "This course introduces you to the core concepts of cloud computing and Amazon Web Services (AWS). You'll learn about essential AWS services like EC2, S3, VPC, IAM, and RDS. The course focuses on practical application, helping you understand how to deploy and manage applications in the cloud securely and efficiently.",
-    duration: "3 months",
-    isPopular: true,
-    whatYouWillLearn: [
-      "Understand the fundamentals of cloud computing and AWS.",
-      "Navigate the AWS Management Console.",
-      "Launch and manage EC2 instances.",
-      "Store and retrieve data using S3.",
-      "Configure virtual networks with VPC.",
-      "Manage user access with IAM.",
-      "Deploy basic web applications to AWS.",
-    ],
-    prerequisites: [
-      "Basic computer literacy.",
-      "Familiarity with internet concepts.",
-    ],
-    syllabus: [
-      {
-        module: "Module 1: Introduction to Cloud & AWS",
-        topics: ["Cloud Concepts", "AWS Global Infrastructure"],
-      },
-      {
-        module: "Module 2: Core AWS Services",
-        topics: ["EC2", "S3", "VPC", "IAM"],
-      },
-      {
-        module: "Module 3: Databases & Networking on AWS",
-        topics: ["RDS", "Route 53", "Load Balancers"],
-      },
-      {
-        module: "Module 4: Security & Monitoring",
-        topics: ["CloudWatch", "CloudTrail", "Basic Security Practices"],
-      },
-    ],
-  },
-  {
-    id: "c4",
-    title: "Mobile App Development (React Native)",
-    slug: "mobile-app-development-react-native",
-    category: "Mobile Development",
-    level: "Intermediate",
-    instructor: {
-      name: "Robert Brown",
-      title: "Lead Mobile Developer at InnovateApps",
-      bio: "Robert has spent 8 years building native and cross-platform mobile applications. He's an expert in React Native and loves creating intuitive user experiences.",
-      image:
-        "https://www.shutterstock.com/image-photo/passport-photo-portrait-young-man-260nw-2437772333.jpg", // Example professional headshot
-      social: {
-        linkedin: "https://linkedin.com/in/robertbrown",
-        website: "https://robertbrown.dev",
-      },
-    },
-    rating: 4.6,
-    reviews: 720,
-    price: 5999,
-    originalPrice: Math.round(5999 / 0.4), // Calculated: 5999 / (1 - 0.60) = 14997.5 -> 14998
-    image:
-      "https://img.freepik.com/free-vector/app-development-banner_33099-1720.jpg",
-    description: "Build cross-platform mobile applications with React Native.",
-    longDescription:
-      "This course focuses on building high-performance, cross-platform mobile applications using React Native. You'll learn to set up your development environment, build UI components, manage state, integrate with APIs, and deploy your apps to both iOS and Android app stores. Emphasis is placed on best practices for mobile UX/UI.",
-    duration: "5 months",
-    isPopular: false,
-    whatYouWillLearn: [
-      "Set up a React Native development environment.",
-      "Build responsive mobile UIs with React Native components.",
-      "Implement navigation and state management.",
-      "Integrate with external APIs and handle data.",
-      "Access native device features (camera, location).",
-      "Prepare and deploy apps to Apple App Store and Google Play Store.",
-    ],
-    prerequisites: [
-      "Strong understanding of JavaScript and React.js.",
-      "Familiarity with mobile development concepts is a plus.",
-    ],
-    syllabus: [
-      {
-        module: "Module 1: React Native Basics",
-        topics: ["Setup", "Components", "Styling"],
-      },
-      {
-        module: "Module 2: Navigation & State",
-        topics: ["React Navigation", "Redux/Context API"],
-      },
-      {
-        module: "Module 3: API Integration & Data",
-        topics: ["Fetching Data", "Local Storage"],
-      },
-      {
-        module: "Module 4: Native Features & Deployment",
-        topics: ["Camera/GPS", "Build & Deploy"],
-      },
-    ],
-  },
-  {
-    id: "c5",
-    title: "Cybersecurity Essentials",
-    slug: "cybersecurity-essentials",
-    category: "Cybersecurity",
-    level: "Beginner",
-    instructor: {
-      name: "Emily White",
-      title: "Cybersecurity Analyst at SecureNet",
-      bio: "Emily is a dedicated cybersecurity professional with a focus on network security and threat detection. She is passionate about educating individuals on digital safety and best practices.",
-      image:
-        "https://www.shutterstock.com/image-photo/passport-photo-portrait-young-man-260nw-2437772333.jpg", // Example professional headshot
-      social: {
-        linkedin: "https://linkedin.com/in/emilywhite",
-      },
-    },
-    rating: 4.7,
-    reviews: 850,
-    price: 2499,
-    originalPrice: Math.round(2499 / 0.4), // Calculated: 2499 / (1 - 0.60) = 6247.5 -> 6248
-    image:
-      "https://iirfranking.com/courses/wp-content/uploads/2022/07/Cyber-Security.jpeg",
-    description: "Understand fundamental cybersecurity concepts and practices.",
-    longDescription:
-      "This introductory course covers the essential principles of cybersecurity. You will learn about common cyber threats, vulnerabilities, and defense mechanisms. Topics include network security, cryptography basics, digital forensics, and secure coding practices. This course is ideal for anyone looking to understand and protect their digital assets.",
-    duration: "3 months",
-    isPopular: false,
-    whatYouWillLearn: [
-      "Identify common cyber threats and attacks.",
-      "Understand basic network security principles.",
-      "Learn about encryption and digital signatures.",
-      "Explore concepts of digital forensics.",
-      "Implement basic secure computing practices.",
-      "Protect personal and organizational data.",
-    ],
-    prerequisites: ["Basic computer and internet usage skills."],
-    syllabus: [
-      {
-        module: "Module 1: Introduction to Cybersecurity",
-        topics: ["Threats & Vulnerabilities", "Security Principles"],
-      },
-      {
-        module: "Module 2: Network Security",
-        topics: ["Firewalls", "IDS/IPS", "VPNs"],
-      },
-      {
-        module: "Module 3: Cryptography & Data Protection",
-        topics: ["Encryption", "Hashing", "Data Privacy"],
-      },
-      {
-        module: "Module 4: Incident Response & Forensics",
-        topics: ["Attack Detection", "Recovery"],
-      },
-    ],
-  },
-  {
-    id: "c6",
-    title: "DevOps & CI/CD with Docker & Kubernetes",
-    slug: "devops-ci-cd-docker-kubernetes",
-    category: "DevOps",
-    level: "Advanced",
-    instructor: {
-      name: "Michael Green",
-      title: "DevOps Lead at CloudSolutions",
-      bio: "Michael is a highly experienced DevOps engineer specializing in automating infrastructure and deployment pipelines. He has a knack for optimizing development workflows and fostering collaboration.",
-      image:
-        "https://www.shutterstock.com/image-photo/passport-photo-portrait-young-man-260nw-2437772333.jpg", // Example professional headshot
-      social: {
-        linkedin: "https://linkedin.com/in/michaelgreen",
-        twitter: "https://twitter.com/michaelgreen_devops",
-      },
-    },
-    rating: 4.8,
-    reviews: 1100,
-    price: 6999,
-    originalPrice: Math.round(6999 / 0.4), // Calculated: 6999 / (1 - 0.60) = 17497.5 -> 17498
-    image: "https://itstu2pro.com/wp-content/uploads/2023/07/cover-2.jpg",
-    description:
-      "Automate software delivery pipelines and manage containerized applications.",
-    longDescription:
-      "This advanced course delves into DevOps practices and continuous integration/continuous delivery (CI/CD) pipelines. You will master containerization with Docker, orchestration with Kubernetes, and automation tools like Jenkins. The course emphasizes hands-on labs to build, deploy, and manage applications efficiently.",
-    duration: "6 months",
-    isPopular: true,
-    whatYouWillLearn: [
-      "Understand DevOps principles and culture.",
-      "Containerize applications using Docker.",
-      "Orchestrate containers with Kubernetes.",
-      "Build automated CI/CD pipelines with Jenkins/GitLab CI.",
-      "Implement infrastructure as code (IaC) with Terraform.",
-      "Monitor and log applications in production.",
-    ],
-    prerequisites: [
-      "Intermediate Linux command-line skills.",
-      "Basic understanding of software development lifecycle.",
-      "Familiarity with a programming language (e.g., Python, Node.js).",
-    ],
-    syllabus: [
-      {
-        module: "Module 1: Introduction to DevOps & Docker",
-        topics: ["DevOps Culture", "Docker Basics", "Docker Compose"],
-      },
-      {
-        module: "Module 2: Kubernetes Fundamentals",
-        topics: ["Pods, Deployments, Services", "Kubernetes Architecture"],
-      },
-      {
-        module: "Module 3: CI/CD Pipelines",
-        topics: ["Jenkins/GitLab CI", "Automated Testing"],
-      },
-      {
-        module: "Module 4: Monitoring & Logging",
-        topics: ["Prometheus, Grafana", "ELK Stack"],
       },
     ],
   },
@@ -401,72 +180,396 @@ export const ALL_COURSES = [
     title: "Artificial Intelligence & Machine Learning",
     slug: "artificial-intelligence-machine-learning",
     category: "AI/ML",
-    level: "Advanced",
+    level: "Advanced", // Updated
     instructor: {
       name: "Sophia Lee",
       title: "AI Research Scientist at FutureLabs",
-      bio: "Sophia is a leading AI researcher with a Ph.D. in Machine Learning. Her work focuses on deep learning, natural language processing, and computer vision. She brings cutting-edge research to practical applications.",
+      bio: "Sophia is a leading AI researcher with a Ph.D. in Machine Learning. Her work focuses on deep learning, natural language processing, and computer vision. She brings cutting-edge research to practical applications and enterprise-scale ML solutions.",
       image:
-        "https://www.shutterstock.com/image-photo/passport-photo-portrait-young-man-260nw-2437772333.jpg", // Example professional headshot
+        "https://www.shutterstock.com/image-photo/passport-photo-portrait-young-man-260nw-2437772333.jpg",
       social: {
         linkedin: "https://linkedin.com/in/sophialee_ai",
       },
     },
     rating: 4.9,
     reviews: 1800,
-    price: 11999,
-    originalPrice: Math.round(11999 / 0.4), // Calculated: 11999 / (1 - 0.60) = 29997.5 -> 29998
+    price: 24500, // Updated price
+    originalPrice: calculateOriginalPrice(24500), // 60% off calculation
     image: "https://sac-elearning.com/wp-content/uploads/2023/10/Ai-Ml.webp",
     description:
-      "Deep dive into AI algorithms, neural networks, and deep learning.",
+      "Deep dive into advanced AI algorithms, neural networks, and **production-ready Deep Learning architectures**.",
     longDescription:
-      "This intensive course provides a deep dive into Artificial Intelligence and Machine Learning, covering advanced algorithms, neural networks, and deep learning architectures. You will work with frameworks like TensorFlow and PyTorch, tackling complex problems in areas such as natural language processing and computer vision. Ideal for aspiring AI engineers and researchers.",
+      "This intensive course provides a deep dive into **advanced Artificial Intelligence and Machine Learning**, covering complex algorithms, neural networks, and modern deep learning architectures. You will master frameworks like **TensorFlow and PyTorch**, tackling complex, real-world problems in areas such as **Natural Language Processing (NLP), Computer Vision, and Reinforcement Learning**. Ideal for aspiring AI engineers and researchers aiming for production-level expertise.",
     duration: "7 months",
     isPopular: true,
     whatYouWillLearn: [
-      "Understand core AI and ML concepts.",
-      "Implement advanced machine learning algorithms.",
-      "Design and train neural networks for deep learning.",
-      "Apply AI/ML to Natural Language Processing (NLP) tasks.",
-      "Explore Computer Vision techniques.",
-      "Work with TensorFlow and PyTorch frameworks.",
+      "Implement and optimize **advanced deep learning architectures** (e.g., GANs, VAEs, Transformers).",
+      "Apply state-of-the-art **AI/ML to Natural Language Processing (NLP)** tasks, including sentiment analysis and text generation.",
+      "Master **Computer Vision techniques** such as object detection, image segmentation, and video analysis.",
+      "Explore the fundamentals and applications of **Reinforcement Learning** (RL) for decision-making systems.",
+      "Design and manage **production ML pipelines (MLOps)** using tools like MLflow and Kubeflow.",
+      "Perform model optimization, quantization, and deployment for edge devices and cloud environments.",
+      "Solidify expertise with **TensorFlow 2.x and PyTorch** frameworks.",
     ],
     prerequisites: [
-      "Strong Python programming skills.",
-      "Solid understanding of linear algebra, calculus, and statistics.",
-      "Familiarity with data science concepts.",
+      "Strong proficiency in Python programming and libraries (NumPy, Pandas, scikit-learn).",
+      "Solid understanding of linear algebra, calculus, and probability/statistics.",
+      "Prior experience building and training basic machine learning models.",
     ],
     syllabus: [
       {
-        module: "Module 1: Advanced ML Concepts",
-        topics: ["Ensemble Methods", "Dimensionality Reduction"],
+        module: "Module 1: Advanced Deep Learning & Optimization",
+        topics: [
+          "Recurrent Neural Networks (RNNs) and Long Short-Term Memory (LSTMs)",
+          "Advanced Optimization Techniques (AdamW, Learning Rate Scheduling)",
+          "Regularization Methods and Hyperparameter Tuning",
+        ],
       },
       {
-        module: "Module 2: Deep Learning Fundamentals",
-        topics: ["Neural Networks", "Backpropagation", "CNNs"],
+        module: "Module 2: Computer Vision Deep Dive",
+        topics: [
+          "Convolutional Neural Networks (CNN) Architectures (ResNet, YOLO)",
+          "Object Detection and Instance Segmentation (R-CNN, Mask R-CNN)",
+          "Transfer Learning and Fine-Tuning Models",
+        ],
       },
       {
-        module: "Module 3: Natural Language Processing",
-        topics: ["RNNs, LSTMs", "Transformers"],
+        module: "Module 3: Natural Language Processing (NLP)",
+        topics: [
+          "Transformer Models and Attention Mechanism",
+          "BERT, GPT, and modern language models for text generation and classification",
+          "Advanced Text Embeddings and Vector Spaces",
+        ],
       },
       {
-        module: "Module 4: Computer Vision",
-        topics: ["Image Recognition", "Object Detection"],
+        module: "Module 4: Reinforcement Learning & MLOps",
+        topics: [
+          "RL Fundamentals: Q-Learning, Policy Gradients (REINFORCE, PPO)",
+          "MLOps: Model Versioning, Deployment (Docker, Kubernetes)",
+          "Monitoring and Drift Detection in Production ML Systems",
+        ],
+      },
+    ],
+  },
+  {
+    id: "c6",
+    title: "DevOps & CI/CD with Docker & Kubernetes",
+    slug: "devops-ci-cd-docker-kubernetes",
+    category: "DevOps",
+    level: "Advanced", // Updated
+    instructor: {
+      name: "Michael Green",
+      title: "DevOps Lead at CloudSolutions",
+      bio: "Michael is a highly experienced DevOps engineer specializing in **automating infrastructure and high-availability deployment pipelines**. He has a knack for optimizing development workflows, managing large-scale clusters, and fostering collaboration.",
+      image:
+        "https://www.shutterstock.com/image-photo/passport-photo-portrait-young-man-260nw-2437772333.jpg",
+      social: {
+        linkedin: "https://linkedin.com/in/michaelgreen",
+        twitter: "https://twitter.com/michaelgreen_devops",
+      },
+    },
+    rating: 4.8,
+    reviews: 1100,
+    price: 20500, // Updated price
+    originalPrice: calculateOriginalPrice(20500), // 60% off calculation
+    image: "https://imgs.search.brave.com/wHmsatTy0gUeUws_LBFSYMQUTHx3EeFein0YoQGJfrw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTIw/NDU1NTM3MC92ZWN0/b3IvZGV2b3BzLXNv/ZnR3YXJlLWFuZC1k/ZXZlbG9wbWVudC1v/cGVyYXRpb25zLXRl/YW0td2l0aC13b21h/bi1hbmQtbWFuLXBy/b2dyYW1tZXIuanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPWpQ/WXV4MWFHMk84dkZU/MFFOWGRkVHhEX21P/ZUFkbTNmdnVrdllH/LUcwQWs9",
+    description:
+      "Master **cloud-native DevOps practices**, advanced Kubernetes orchestration, and immutable infrastructure automation.",
+    longDescription:
+      "This advanced course delves into **enterprise-level DevOps practices** and the creation of highly resilient **CI/CD pipelines**. You will master **containerization with Docker**, advanced orchestration with **Kubernetes (including Helm and Operators)**, and automation with tools like **Terraform and Ansible**. The course emphasizes hands-on labs for deploying, scaling, and monitoring applications in a cloud-native, high-availability environment.",
+    duration: "6 months",
+    isPopular: true,
+    whatYouWillLearn: [
+      "Implement **Infrastructure as Code (IaC)** using **Terraform** for multi-cloud environments.",
+      "Master advanced **Kubernetes concepts** (Helm, Operators, Networking, Security Policies).",
+      "Build highly available and resilient **CI/CD pipelines** using Jenkins, GitLab CI, or ArgoCD.",
+      "Implement robust **monitoring, logging, and alerting** using the **Prometheus/Grafana/ELK stack**.",
+      "Secure and harden containerized applications and Kubernetes clusters.",
+      "Apply **GitOps principles** for declarative infrastructure and application deployment.",
+      "Troubleshoot and optimize large-scale production environments.",
+    ],
+    prerequisites: [
+      "Proficiency in Linux command-line and scripting (Bash/Python).",
+      "Solid understanding of networking fundamentals and a programming language.",
+      "Prior experience with basic Docker usage.",
+    ],
+    syllabus: [
+      {
+        module: "Module 1: Advanced Docker & Containerization",
+        topics: [
+          "Multi-Stage Builds and Image Optimization",
+          "Securing Docker Containers and Registry Management",
+          "Networking and Volume Management Deep Dive",
+        ],
+      },
+      {
+        module: "Module 2: Kubernetes Orchestration Mastery",
+        topics: [
+          "Advanced Deployment Strategies (Canary, Blue/Green)",
+          "Service Mesh (Istio/Linkerd) and Microservices Communication",
+          "Kubernetes Storage and Configuration Management (ConfigMaps, Secrets)",
+        ],
+      },
+      {
+        module: "Module 3: Infrastructure as Code (IaC) with Terraform",
+        topics: [
+          "Terraform for Multi-Cloud Provisioning (AWS/Azure/GCP)",
+          "State Management and Collaboration with Terraform",
+          "Idempotent Configuration Management with Ansible/Chef",
+        ],
+      },
+      {
+        module: "Module 4: Advanced CI/CD and Observability",
+        topics: [
+          "Implementing GitOps with ArgoCD/Flux",
+          "Advanced Monitoring with Prometheus, Grafana, and Custom Metrics",
+          "Distributed Tracing and Log Aggregation (Jaeger, OpenTelemetry)",
+        ],
+      },
+    ],
+  },
+  {
+    id: "c3",
+    title: "Cloud Computing Professional (AWS)",
+    slug: "cloud-computing-professional-aws",
+    category: "Cloud Computing",
+    level: "Advanced", // Updated
+    instructor: {
+      name: "Alice Johnson",
+      title: "Cloud Solutions Architect at GlobalTech",
+      bio: "Alice is a certified AWS Solutions Architect with extensive experience designing and implementing **complex, cost-optimized, and highly secure cloud solutions** for global enterprises. She focuses on Serverless, Networking, and Security best practices.",
+      image:
+        "https://www.shutterstock.com/image-photo/passport-photo-portrait-young-man-260nw-2437772333.jpg",
+      social: {
+        linkedin: "https://linkedin.com/in/alicejohnson",
+      },
+    },
+    rating: 4.9,
+    reviews: 1500,
+    price: 22500, // Updated price
+    originalPrice: calculateOriginalPrice(22500), // 60% off calculation
+    image:
+      "https://media.istockphoto.com/id/2114295998/photo/asian-and-indian-developer-devops-team-discussion-about-coding-promgram-with-software.jpg?s=2048x2048&w=is&k=20&c=815QNju4g70uc0fFTGiDFsEhhSej2qs99M3o0Hx8ChE=",
+    description:
+      "Achieve expertise in **AWS architecture, networking, security, and Serverless computing** to design scalable cloud solutions.",
+    longDescription:
+      "This advanced professional course moves beyond fundamentals to focus on **designing, securing, and optimizing production-grade cloud environments on AWS**. You'll master advanced networking (VPC peering, Transit Gateway), security concepts (WAF, GuardDuty), and modern compute paradigms like **AWS Lambda, ECS, and EKS**. The course prepares you for architect-level certifications and real-world solution design.",
+    duration: "4 months",
+    isPopular: true,
+    whatYouWillLearn: [
+      "Design and implement **complex networking architectures** using AWS VPC, Subnets, and Gateways.",
+      "Master **Serverless computing** using AWS Lambda, API Gateway, and DynamoDB for high scalability.",
+      "Implement enterprise-level **security best practices** with IAM, Security Hub, and encryption mechanisms.",
+      "Optimize cloud costs and performance using reserved instances, compute optimizer, and auto-scaling.",
+      "Manage containerized applications using **ECS/EKS** and understand integration with CI/CD tools.",
+      "Design disaster recovery and high availability strategies across multiple AWS regions.",
+      "Prepare for the **AWS Solutions Architect Professional** certification.",
+    ],
+    prerequisites: [
+      "Solid understanding of core AWS services (EC2, S3, RDS).",
+      "Experience with networking concepts (IP addressing, routing).",
+      "Basic scripting or programming knowledge is recommended.",
+    ],
+    syllabus: [
+      {
+        module: "Module 1: Advanced VPC and Networking",
+        topics: [
+          "VPC Peering, Transit Gateway, and Site-to-Site VPN",
+          "Route 53 Advanced Routing Policies",
+          "Network Security: NACLs, Security Groups Deep Dive",
+        ],
+      },
+      {
+        module: "Module 2: Serverless Architecture with Lambda",
+        topics: [
+          "Building Microservices with Lambda and API Gateway",
+          "Event-Driven Architectures (SQS, SNS, EventBridge)",
+          "Serverless Database Patterns (DynamoDB Advanced)",
+        ],
+      },
+      {
+        module: "Module 3: Security, Identity, and Compliance",
+        topics: [
+          "IAM Best Practices, Roles, and Policies",
+          "Advanced Security Services (WAF, GuardDuty, Macie)",
+          "Compliance Standards and Audit Logs (CloudTrail, Config)",
+        ],
+      },
+      {
+        module: "Module 4: Disaster Recovery and Cost Optimization",
+        topics: [
+          "Multi-Region Deployment and High Availability",
+          "Backup and Recovery Strategies (DRP)",
+          "Advanced Cost Management Tools and Optimization Techniques",
+        ],
+      },
+    ],
+  },
+  {
+    id: "c4",
+    title: "Mobile App Development Professional (React Native)",
+    slug: "mobile-app-development-react-native",
+    category: "Mobile Development",
+    level: "Advanced", // Updated
+    instructor: {
+      name: "Robert Brown",
+      title: "Lead Mobile Developer at InnovateApps",
+      bio: "Robert has spent 8 years building native and cross-platform mobile applications. He's an expert in **React Native, native module development, and high-performance UI/UX**. He loves creating intuitive user experiences for enterprise apps.",
+      image:
+        "https://www.shutterstock.com/image-photo/passport-photo-portrait-young-man-260nw-2437772333.jpg",
+      social: {
+        linkedin: "https://linkedin.com/in/robertbrown",
+        website: "https://robertbrown.dev",
+      },
+    },
+    rating: 4.6,
+    reviews: 720,
+    price: 19999, // Updated price
+    originalPrice: calculateOriginalPrice(19999), // 60% off calculation
+    image:
+      "https://img.freepik.com/free-vector/app-development-banner_33099-1720.jpg",
+    description: "Build **high-performance, production-ready** cross-platform mobile applications with advanced React Native techniques.",
+    longDescription:
+      "This advanced course focuses on building **highly performant and scalable** cross-platform mobile applications using advanced React Native techniques. You'll master topics like **native module bridging (iOS/Android), performance optimization, advanced state management, and continuous delivery (CI/CD)**. Emphasis is placed on best practices for mobile UX/UI and enterprise-level application development.",
+    duration: "5 months",
+    isPopular: false,
+    whatYouWillLearn: [
+      "Master **advanced React Native performance optimization** techniques (Hermes, Reanimated).",
+      "Implement **native module bridging** with Swift/Kotlin for custom functionality.",
+      "Design and implement advanced state management using **Redux Toolkit or MobX**.",
+      "Secure mobile applications using **biometrics, secure storage, and network request hardening**.",
+      "Integrate with complex native APIs and third-party SDKs.",
+      "Set up **CI/CD pipelines (Fastlane, GitHub Actions)** for automated build and deployment.",
+      "Troubleshoot and debug performance issues in production apps.",
+    ],
+    prerequisites: [
+      "Strong proficiency in JavaScript/TypeScript and React.js.",
+      "Familiarity with basic React Native concepts and component lifecycle.",
+      "Basic understanding of native mobile development environments (Xcode, Android Studio) is a plus.",
+    ],
+    syllabus: [
+      {
+        module: "Module 1: Performance & Advanced React Native",
+        topics: [
+          "Deep Dive into React Native Architecture (Bridge, JSI)",
+          "Performance Optimization with Reanimated and Skia",
+          "Advanced Custom Hooks and Component Patterns",
+        ],
+      },
+      {
+        module: "Module 2: Native Module Bridging (iOS & Android)",
+        topics: [
+          "Building Native Modules in Swift/Kotlin",
+          "Interacting with Native UI Components",
+          "Handling Complex Data Passing between JS and Native",
+        ],
+      },
+      {
+        module: "Module 3: Security & Data Management",
+        topics: [
+          "Advanced State Management with Redux Toolkit/RTK Query",
+          "Authentication & Biometrics Integration (Face ID/Touch ID)",
+          "Secure Data Storage (Keychain/Keystore)",
+        ],
+      },
+      {
+        module: "Module 4: CI/CD & Production Deployment",
+        topics: [
+          "Setting up Automated Build/Release with Fastlane",
+          "Over-the-Air (OTA) Updates and CodePush",
+          "App Store Optimization (ASO) and Deployment Best Practices",
+        ],
+      },
+    ],
+  },
+  {
+    id: "c5",
+    title: "Cybersecurity Professional & Ethical Hacking",
+    slug: "cybersecurity-essentials",
+    category: "Cybersecurity",
+    level: "Advanced", // Updated
+    instructor: {
+      name: "Emily White",
+      title: "Cybersecurity Analyst at SecureNet",
+      bio: "Emily is a dedicated cybersecurity professional with a focus on **penetration testing, threat hunting, and incident response**. She holds multiple industry certifications and is passionate about educating individuals on offensive and defensive digital strategies.",
+      image:
+        "https://www.shutterstock.com/image-photo/passport-photo-portrait-young-man-260nw-2437772333.jpg",
+      social: {
+        linkedin: "https://linkedin.com/in/emilywhite",
+      },
+    },
+    rating: 4.7,
+    reviews: 850,
+    price: 23500, // Updated price
+    originalPrice: calculateOriginalPrice(23500), // 60% off calculation
+    image:
+      "https://iirfranking.com/courses/wp-content/uploads/2022/07/Cyber-Security.jpeg",
+    description: "Master **ethical hacking, advanced threat detection, and professional incident response** strategies.",
+    longDescription:
+      "This advanced course transforms foundational knowledge into **professional cybersecurity expertise**. You will master offensive techniques like **penetration testing and vulnerability assessment** using tools like Metasploit, alongside defensive strategies such as **threat modeling, SIEM management, and advanced incident response**. The course emphasizes hands-on lab environments for real-world simulation.",
+    duration: "5 months",
+    isPopular: false,
+    whatYouWillLearn: [
+      "Execute full-cycle **Ethical Hacking and Penetration Testing** methodologies.",
+      "Master **vulnerability assessment, exploitation, and post-exploitation techniques**.",
+      "Configure and utilize **Security Information and Event Management (SIEM)** systems for log analysis.",
+      "Develop and implement **advanced incident response plans** and digital forensics procedures.",
+      "Understand and mitigate **web application vulnerabilities** (OWASP Top 10) with tools like Burp Suite.",
+      "Perform **network and wireless security audits** and understand intrusion detection systems.",
+      "Apply secure coding principles and **DevSecOps** practices.",
+    ],
+    prerequisites: [
+      "Solid understanding of basic networking (TCP/IP, subnetting).",
+      "Familiarity with Linux command-line and scripting.",
+      "Knowledge of common cyber threats and security principles.",
+    ],
+    syllabus: [
+      {
+        module: "Module 1: Ethical Hacking & Reconnaissance",
+        topics: [
+          "Kali Linux Environment Setup and Tooling",
+          "Advanced Footprinting and Scanning (Nmap, enumeration)",
+          "Vulnerability Assessment and Reporting",
+        ],
+      },
+      {
+        module: "Module 2: Exploitation & Post-Exploitation",
+        topics: [
+          "Exploiting Client-Side and Server-Side Vulnerabilities (Metasploit)",
+          "Covering Tracks and Privilege Escalation",
+          "Password Attacks and Wireless Hacking",
+        ],
+      },
+      {
+        module: "Module 3: Advanced Defense & SIEM",
+        topics: [
+          "Security Architecture Design and Threat Modeling",
+          "SIEM Implementation and Log Correlation",
+          "Intrusion Detection/Prevention System (IDS/IPS) Tuning",
+        ],
+      },
+      {
+        module: "Module 4: Incident Response & Forensics",
+        topics: [
+          "Developing a Professional Incident Response Plan",
+          "Digital Forensics: Chain of Custody, Data Acquisition",
+          "Malware Analysis Fundamentals",
+        ],
       },
     ],
   },
   {
     id: "c8",
-    title: "Digital Marketing Mastery",
+    title: "Digital Marketing & Growth Hacking Professional",
     slug: "digital-marketing-mastery",
     category: "Digital Marketing",
-    level: "Advanced",
+    level: "Advanced", // Updated
     instructor: {
       name: "David Chen",
       title: "Head of Digital Marketing at BrandBoost",
-      bio: "David is a digital marketing veteran with over 12 years of experience crafting successful online strategies. He specializes in SEO, SEM, and social media campaigns that drive measurable results.",
+      bio: "David is a digital marketing veteran with over 12 years of experience crafting successful online strategies. He specializes in **data-driven growth hacking, advanced SEO/SEM automation, and multi-channel attribution modeling**.",
       image:
-        "https://www.shutterstock.com/image-photo/passport-photo-portrait-young-man-260nw-2437772333.jpg", // Example professional headshot
+        "https://www.shutterstock.com/image-photo/passport-photo-portrait-young-man-260nw-2437772333.jpg",
       social: {
         linkedin: "https://linkedin.com/in/davidchen_marketing",
         twitter: "https://twitter.com/davidchen_mkt",
@@ -474,44 +577,62 @@ export const ALL_COURSES = [
     },
     rating: 4.5,
     reviews: 600,
-    price: 5999,
-    originalPrice: Math.round(5999 / 0.4), // Calculated: 5999 / (1 - 0.60) = 14997.5 -> 14998
+    price: 20999, // Updated price
+    originalPrice: calculateOriginalPrice(20999), // 60% off calculation
     image:
       "https://aclm.in/wp-content/uploads/2021/08/advanced-digital-marketing.jpg",
     description:
-      "Learn SEO, SEM, social media marketing, and content strategy.",
+      "Master **data-driven Growth Hacking**, advanced SEO automation, and multi-channel attribution modeling for explosive business growth.",
     longDescription:
-      "This masterclass provides an in-depth understanding of digital marketing strategies and tools. You will learn how to optimize websites for search engines (SEO), manage paid advertising campaigns (SEM), leverage social media for brand building, and create compelling content strategies. The course is highly practical, focusing on real-world case studies and actionable techniques.",
+      "This masterclass provides an in-depth understanding of **Advanced Digital Marketing strategies and Growth Hacking methodologies**. You will learn to use sophisticated tools for **SEO automation, programmatic advertising, multi-touch attribution, and A/B testing at scale**. The course is highly practical, focusing on real-world case studies for achieving hyper-growth and optimizing Customer Lifetime Value (CLV).",
     duration: "4 months",
     isPopular: false,
     whatYouWillLearn: [
-      "Develop comprehensive digital marketing strategies.",
-      "Master Search Engine Optimization (SEO) techniques.",
-      "Run effective Search Engine Marketing (SEM) campaigns.",
-      "Build and manage social media marketing strategies.",
-      "Create engaging content for various digital platforms.",
-      "Analyze marketing data and measure campaign ROI.",
+      "Develop and execute end-to-end **Growth Hacking funnels** (AARRR metrics).",
+      "Master **technical SEO, schema markup, and site speed optimization**.",
+      "Run advanced **Search Engine Marketing (SEM)** campaigns with dynamic creative optimization.",
+      "Implement and analyze **multi-touch attribution models** to accurately measure channel ROI.",
+      "Build and automate advanced **Social Media and Influencer Marketing campaigns**.",
+      "Utilize **marketing automation platforms** (HubSpot, Marketo) for lead nurturing and personalization.",
+      "Perform **advanced data analysis** using Google Analytics 4 and other BI tools to drive business decisions.",
     ],
     prerequisites: [
-      "Basic understanding of marketing concepts.",
-      "Familiarity with internet and social media platforms.",
+      "Solid understanding of core marketing concepts and digital channels (SEO, SEM).",
+      "Experience with Google Analytics or similar web analytics tools.",
+      "Familiarity with conversion rate optimization (CRO) principles.",
     ],
     syllabus: [
       {
-        module: "Module 1: Digital Marketing Fundamentals",
-        topics: ["Strategy", "Market Research"],
+        module: "Module 1: Growth Hacking & AARRR Framework",
+        topics: [
+          "Developing a Data-Driven Growth Strategy",
+          "Advanced Customer Lifetime Value (CLV) Modeling",
+          "Viral Loops and Referral Marketing",
+        ],
       },
       {
-        module: "Module 2: SEO & SEM",
-        topics: ["Keyword Research", "On-Page/Off-Page SEO", "Google Ads"],
+        module: "Module 2: Advanced SEO & Content Strategy",
+        topics: [
+          "Technical SEO Audits and Core Web Vitals Optimization",
+          "Advanced Keyword Research and Semantic SEO",
+          "Content Personalization and AI-Driven Content Creation",
+        ],
       },
       {
-        module: "Module 3: Social Media Marketing",
-        topics: ["Platform Strategy", "Content Creation", "Paid Social"],
+        module: "Module 3: Advanced Paid Media & Automation",
+        topics: [
+          "Programmatic Advertising and DSP/SSP Ecosystems",
+          "Dynamic Creative Optimization (DCO) and Ad Automation",
+          "Cross-Platform Retargeting Strategies",
+        ],
       },
       {
-        module: "Module 4: Content Marketing & Analytics",
-        topics: ["Content Strategy", "Email Marketing", "Google Analytics"],
+        module: "Module 4: Marketing Analytics & Attribution",
+        topics: [
+          "Implementing and Auditing Google Analytics 4 (GA4)",
+          "Multi-Touch Attribution Modeling (Linear, Time Decay, U-Shaped)",
+          "A/B Testing, Multivariate Testing, and Conversion Rate Optimization (CRO)",
+        ],
       },
     ],
   },
