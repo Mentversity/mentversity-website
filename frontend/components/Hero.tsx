@@ -57,13 +57,13 @@ const Hero = () => {
                 <div className="text-gray-300 text-base mt-2 font-medium">Learners</div>
               </div>
               {/* Stat Card 2: Courses */}
-              <div className="text-center px-6 py-4 bg-white/5 backdrop-blur-lg rounded-xl border border-gray-700 shadow-md
+              {/* <div className="text-center px-6 py-4 bg-white/5 backdrop-blur-lg rounded-xl border border-gray-700 shadow-md
                           transition-all duration-300 ease-in-out hover:scale-[1.03] min-w-[150px]">
                 <div className="font-['Sora',_sans-serif] text-4xl md:text-5xl font-bold text-[#00C896] leading-none">
                   500+
                 </div>
                 <div className="text-gray-300 text-base mt-2 font-medium">Courses</div>
-              </div>
+              </div> */}
               {/* Stat Card 3: Success Rate */}
               <div className="text-center px-6 py-4 bg-white/5 backdrop-blur-lg rounded-xl border border-gray-700 shadow-md
                           transition-all duration-300 ease-in-out hover:scale-[1.03] min-w-[150px]">

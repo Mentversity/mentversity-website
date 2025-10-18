@@ -1,19 +1,184 @@
-// The CourseType and ALL_COURSES data are now defined directly here for self-containment
-// In a real application, you would typically import these from a separate data file (e.g., ../../data/courses)
-
 // Helper function to calculate discounted price
 const calculateOriginalPrice = (discountedPrice: number, discountRate: number = 0.60) =>
   Math.round(discountedPrice / (1 - discountRate));
 
 export const ALL_COURSES = [
+  // {
+  //   id: "c3",
+  //   title: "Data Science with Agentic AI & Gen AI",
+  //   slug: "data-science-agentic-ai-genai",
+  //   category: "Data Science & AI",
+  //   level: "Advanced",
+  //   instructor: {
+  //     name: "Hitesh Jha",
+  //     title: "Data Scientist at Emergys",
+  //     bio: "Hitesh Jha is an experienced Data Scientist at Emergys, having led high-impact AI projects with Tesla, Snowflake, and MorningStar. He specializes in Data Science, Agentic AI systems, and Generative AI solutions that integrate automation, reasoning, and creativity.",
+  //     image:
+  //       "https://media.istockphoto.com/id/1283652045/photo/handsome-indian-businessman.jpg?s=2048x2048&w=is&k=20&c=8mUlObv7bJgmZZ7_0nOeGshLzX2UJYnsMRQAfzMxtU=",
+  //     social: {
+  //       linkedin: "https://linkedin.com/in/hiteshjha",
+  //       twitter: "https://twitter.com/hiteshjha_ds",
+  //     },
+  //   },
+  //   rating: 4.9,
+  //   reviews: 1860,
+  //   price: 24999, // Kept the same
+  //   originalPrice: 48000, // Kept the same (approx. 48% off, but meets the original requirement)
+  //   image:
+  //     "/dsai.png",
+  //   description:
+  //     "Master Data Science, Agentic AI, and Generative AI — build intelligent, autonomous, and creative AI systems.",
+  //   longDescription:
+  //     "This advanced course blends Data Science, Agentic AI, and Generative AI to help you design intelligent systems that learn, reason, and act autonomously. You'll gain expertise in **advanced data processing, predictive modeling, and integrating State-of-the-Art LLMs** with autonomous multi-agent frameworks. Build hands-on projects in domains like healthcare, finance, and research using advanced **RAG pipelines, LangChain, CrewAI, and cutting-edge Gen AI tools**.",
+  //   duration: "5 months",
+  //   isPopular: true,
+  //   whatYouWillLearn: [
+  //     "Design and deploy intelligent **Agentic AI systems** using multi-agent architectures and LLMs.",
+  //     "Master Generative AI concepts using **OpenAI, Gemini, and fine-tuning techniques**.",
+  //     "Implement **advanced Retrieval-Augmented Generation (RAG)** systems for domain-specific knowledge.",
+  //     "Perform end-to-end data science workflows with a focus on **deep learning models and MLOps**.",
+  //     "Develop multi-agent workflows capable of **reasoning, complex planning, and sophisticated tool usage**.",
+  //     "Leverage **Vector Databases (FAISS, Pinecone)** and cloud infrastructure for scalable applications.",
+  //     "Complete Capstone projects across high-value domains like **Healthcare, Finance, and Autonomous Research**.",
+  //   ],
+  //   prerequisites: [
+  //     "Proficiency in Python programming and data structures.",
+  //     "Solid understanding of Machine Learning fundamentals and statistics.",
+  //     "Familiarity with neural networks or deep learning is highly recommended.",
+  //   ],
+  //   syllabus: [
+  //     {
+  //       module: "Module 1: Advanced ML & Deep Learning Foundations",
+  //       topics: [
+  //         "Deep Dive into Advanced Machine Learning Algorithms",
+  //         "Neural Network Architectures (CNNs, RNNs, Transformers)",
+  //         "Advanced Python for AI — PyTorch/TensorFlow",
+  //       ],
+  //     },
+  //     {
+  //       module: "Module 2: Generative AI & Large Language Models (LLMs)",
+  //       topics: [
+  //         "Transformer Architecture and LLM Mechanics",
+  //         "Advanced Prompt Engineering (Chain of Thought, Tree of Thought)",
+  //         "Fine-Tuning LLMs and Parameter-Efficient Fine-Tuning (PEFT)",
+  //       ],
+  //     },
+  //     {
+  //       module: "Module 3: Agentic AI Systems & Multi-Agent Frameworks",
+  //       topics: [
+  //         "Agent Architecture: Reasoning, Memory, and Tool-Use (ReAct, CoT)",
+  //         "Building Autonomous Multi-Agent Systems with LangChain and CrewAI",
+  //         "Integrating Agents with Complex APIs and Real-Time Data Sources",
+  //       ],
+  //     },
+  //     {
+  //       module: "Module 4: Advanced Retrieval-Augmented Generation (RAG)",
+  //       topics: [
+  //         "Vector Embeddings, Indexing, and Search Optimization",
+  //         "Advanced RAG Techniques (Self-Correcting RAG, RAG with Agents)",
+  //         "Implementing Production-Ready Vector Databases (FAISS, Chroma, Pinecone)",
+  //       ],
+  //     },
+  //     {
+  //       module: "Module 5: Capstone & MLOps for Agentic AI",
+  //       topics: [
+  //         "Designing an End-to-End Autonomous Agent Capstone Project",
+  //         "MLOps for Agentic Systems: Monitoring and Logging",
+  //         "Containerization and Cloud Deployment (Docker, Kubernetes for Agents)",
+  //       ],
+  //     },
+  //   ],
+  // },
+  // --- NEW COURSE 1: Data Science with Entrepreneurship ---
   {
-    id: "c3",
-    title: "Data Science with Agentic AI & Gen AI",
-    slug: "data-science-agentic-ai-genai",
+    id: "c9",
+    title: "Data Science with Entrepreneurship",
+    slug: "data-science-entrepreneurship",
     category: "Data Science & AI",
     level: "Advanced",
     instructor: {
-      name: "Hitesh Jha",
+      name: "Sophia Lee", 
+      title: "AI Research Scientist at FutureLabs",
+      bio: "Sophia is a leading AI researcher with a Ph.D. in Machine Learning. Her work focuses on deep learning, NLP, and computer vision. She brings cutting-edge research to practical applications and enterprise-scale ML solutions.",
+      image:
+        "https://www.shutterstock.com/image-photo/passport-photo-portrait-young-man-260nw-2437772333.jpg",
+      social: {
+        linkedin: "https://linkedin.com/in/sophialee_ai",
+      },
+    },
+    rating: 4.8,
+    reviews: 1400,
+    price: 9999, // Updated price as requested
+    originalPrice: 25000, // Estimated original price
+    image: "https://sac-elearning.com/wp-content/uploads/2023/10/Ai-Ml.webp", 
+    description:
+      "Master core Data Science skills and the **entrepreneurial framework** to launch a data-driven product or business.",
+    longDescription:
+      "This intensive course combines **core Data Science principles (Python, ML, Modeling)** with a practical **Entrepreneurship framework**. You will learn to identify market opportunities using data, develop a Minimum Viable Product (MVP), and create a go-to-market strategy. The capstone project focuses on building a commercially viable data product.",
+    duration: "6 months",
+    isPopular: true,
+    whatYouWillLearn: [
+      "Perform end-to-end data analysis, cleaning, and predictive modeling using Python and scikit-learn.",
+      "Master business analytics, statistical inference, and hypothesis testing for product validation.",
+      "Design and develop a **Minimum Viable Product (MVP)** for a data-driven solution.",
+      "Learn to perform **market analysis and competitive benchmarking** using quantitative methods.",
+      "Create a robust **business plan, financial model, and pitch deck** for securing seed funding.",
+      "Understand **product management** principles for data products (A/B testing, feature prioritization).",
+      "Develop a **data monetization strategy** and understand legal/ethical considerations.",
+    ],
+    prerequisites: [
+      "Proficiency in Python programming and data structures.",
+      "Basic understanding of statistics and algebra.",
+      "Familiarity with foundational Machine Learning concepts is a plus.",
+    ],
+    syllabus: [
+      {
+        module: "Module 1: Data Science Core Foundations (Python, Stats, SQL)",
+        topics: [
+          "Advanced Python for Data Analysis (Pandas, NumPy)",
+          "Statistical Modeling and Hypothesis Testing",
+          "Data Wrangling, Cleaning, and Exploratory Data Analysis (EDA)",
+          "SQL and NoSQL for Data Storage and Retrieval",
+        ],
+      },
+      {
+        module: "Module 2: Machine Learning for Business Decisions",
+        topics: [
+          "Supervised Learning: Regression and Classification Models",
+          "Unsupervised Learning: Clustering and Dimensionality Reduction",
+          "Model Evaluation, Validation, and Interpretation for Business Metrics",
+          "Introduction to Deep Learning and Time Series Analysis",
+        ],
+      },
+      {
+        module: "Module 3: Entrepreneurship & Data-Driven Business Strategy 🚀", 
+        topics: [
+          "**Idea Validation:** Market Sizing, Competitor Analysis, and Pain Point Identification",
+          "**Business Modeling:** Lean Canvas, Value Proposition Design, and Revenue Streams",
+          "**Product Strategy:** Defining the MVP, Feature Prioritization, and A/B Testing",
+          "**Entrepreneurial Finance:** Basic Financial Modeling, Burn Rate, and Funding Stages (Seed, Series A)",
+        ],
+      },
+      {
+        module: "Module 4: Launching Your Data Product & Capstone",
+        topics: [
+          "Building a Data Product Pipeline (from data ingestion to user interface)",
+          "Introduction to Cloud Deployment (AWS/GCP basics for data products)",
+          "Creating a Professional Pitch Deck and Presentation",
+          "Final Capstone Project: Develop and present a data-driven business MVP",
+        ],
+      },
+    ],
+  },
+  // --- NEW COURSE 2: Agentic AI + Gen AI with Entrepreneurship ---
+  {
+    id: "c10",
+    title: "Agentic AI + Gen AI with Entrepreneurship",
+    slug: "agentic-genai-entrepreneurship",
+    category: "Data Science & AI",
+    level: "Advanced",
+    instructor: {
+      name: "Hitesh Jha", 
       title: "Data Scientist at Emergys",
       bio: "Hitesh Jha is an experienced Data Scientist at Emergys, having led high-impact AI projects with Tesla, Snowflake, and MorningStar. He specializes in Data Science, Agentic AI systems, and Generative AI solutions that integrate automation, reasoning, and creativity.",
       image:
@@ -25,24 +190,24 @@ export const ALL_COURSES = [
     },
     rating: 4.9,
     reviews: 1860,
-    price: 24999, // Kept the same
-    originalPrice: 48000, // Kept the same (approx. 48% off, but meets the original requirement)
+    price: 9999, // Updated price as requested
+    originalPrice: 48000, 
     image:
       "/dsai.png",
     description:
-      "Master Data Science, Agentic AI, and Generative AI — build intelligent, autonomous, and creative AI systems.",
+      "Master Agentic AI and Generative AI, focusing on the **product development lifecycle** and launching a GenAI-powered startup.",
     longDescription:
-      "This advanced course blends Data Science, Agentic AI, and Generative AI to help you design intelligent systems that learn, reason, and act autonomously. You'll gain expertise in **advanced data processing, predictive modeling, and integrating State-of-the-Art LLMs** with autonomous multi-agent frameworks. Build hands-on projects in domains like healthcare, finance, and research using advanced **RAG pipelines, LangChain, CrewAI, and cutting-edge Gen AI tools**.",
+      "This course is for the builder who wants to launch a GenAI-powered business. It blends core expertise in **LLMs, RAG, and Autonomous Agents (LangChain/CrewAI)** with the critical skills for **AI product management, monetization, and ethical deployment**. You'll build and launch a market-ready AI Agent prototype as your capstone project.",
     duration: "5 months",
     isPopular: true,
     whatYouWillLearn: [
       "Design and deploy intelligent **Agentic AI systems** using multi-agent architectures and LLMs.",
       "Master Generative AI concepts using **OpenAI, Gemini, and fine-tuning techniques**.",
+      "Develop an **AI product roadmap and monetization strategy** for agent-based solutions.",
       "Implement **advanced Retrieval-Augmented Generation (RAG)** systems for domain-specific knowledge.",
-      "Perform end-to-end data science workflows with a focus on **deep learning models and MLOps**.",
+      "Apply a **Lean Startup methodology** to AI product development and iterative improvement.",
       "Develop multi-agent workflows capable of **reasoning, complex planning, and sophisticated tool usage**.",
-      "Leverage **Vector Databases (FAISS, Pinecone)** and cloud infrastructure for scalable applications.",
-      "Complete Capstone projects across high-value domains like **Healthcare, Finance, and Autonomous Research**.",
+      "**Secure initial funding** by crafting a compelling pitch focused on AI's unique value proposition.",
     ],
     prerequisites: [
       "Proficiency in Python programming and data structures.",
@@ -51,43 +216,40 @@ export const ALL_COURSES = [
     ],
     syllabus: [
       {
-        module: "Module 1: Advanced ML & Deep Learning Foundations",
-        topics: [
-          "Deep Dive into Advanced Machine Learning Algorithms",
-          "Neural Network Architectures (CNNs, RNNs, Transformers)",
-          "Advanced Python for AI — PyTorch/TensorFlow",
-        ],
-      },
-      {
-        module: "Module 2: Generative AI & Large Language Models (LLMs)",
+        module: "Module 1: Generative AI & Large Language Models (LLMs)",
         topics: [
           "Transformer Architecture and LLM Mechanics",
           "Advanced Prompt Engineering (Chain of Thought, Tree of Thought)",
           "Fine-Tuning LLMs and Parameter-Efficient Fine-Tuning (PEFT)",
+          "Evaluating and Benchmarking LLM Performance",
         ],
       },
       {
-        module: "Module 3: Agentic AI Systems & Multi-Agent Frameworks",
+        module: "Module 2: Agentic AI Systems & Multi-Agent Frameworks",
         topics: [
           "Agent Architecture: Reasoning, Memory, and Tool-Use (ReAct, CoT)",
           "Building Autonomous Multi-Agent Systems with LangChain and CrewAI",
           "Integrating Agents with Complex APIs and Real-Time Data Sources",
+          "Designing Agent Collaboration and Communication Protocols",
         ],
       },
       {
-        module: "Module 4: Advanced Retrieval-Augmented Generation (RAG)",
+        module: "Module 3: Advanced Retrieval-Augmented Generation (RAG)",
         topics: [
           "Vector Embeddings, Indexing, and Search Optimization",
           "Advanced RAG Techniques (Self-Correcting RAG, RAG with Agents)",
           "Implementing Production-Ready Vector Databases (FAISS, Chroma, Pinecone)",
+          "Building Multi-Modal RAG Systems (Text, Image, Video)",
         ],
       },
       {
-        module: "Module 5: Capstone & MLOps for Agentic AI",
+        module: "Module 4: AI Product Entrepreneurship & Launchpad 🚀", 
         topics: [
-          "Designing an End-to-End Autonomous Agent Capstone Project",
-          "MLOps for Agentic Systems: Monitoring and Logging",
-          "Containerization and Cloud Deployment (Docker, Kubernetes for Agents)",
+          "**AI Product Management:** Identifying High-Value Agentic Use Cases",
+          "**Monetization & Pricing Models** for AI-as-a-Service (AaaS) and APIs",
+          "**Legal & Ethical AI:** Compliance, Data Privacy, and Bias Mitigation",
+          "**Pitching Your AI Startup:** Value Proposition, Market Fit, and Demonstrating Agent Capabilities",
+          "**Capstone Project:** Developing a production-ready, autonomous AI Agent MVP.",
         ],
       },
     ],
