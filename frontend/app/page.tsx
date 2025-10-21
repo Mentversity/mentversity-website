@@ -6,6 +6,13 @@ import Testimonials from '@/components/Testimonials'
 import CTASection from '@/components/CTASection'
 import Footer from '@/components/Footer'
 
+export const metadata = {
+  alternates: {
+    canonical: "https://www.mentversity.com",
+  },
+};
+
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-950">

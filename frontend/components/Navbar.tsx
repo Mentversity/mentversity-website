@@ -68,9 +68,8 @@ const Navbar = () => {
 
   return (
     <div className="fixed top-0 left-0 w-full z-50">
-      {/* --- Offer Marquee Bar --- */}
-      <div className="w-full bg-gradient-to-r from-[#00C896] via-[#10F3DA] to-[#00C896] border-b border-[#0B132B] h-12 relative overflow-hidden">
-        {/* Marquee loop */}
+      {/* <div className="w-full bg-gradient-to-r from-[#00C896] via-[#10F3DA] to-[#00C896] border-b border-[#0B132B] h-12 relative overflow-hidden">
+
         <div className="flex items-center h-12 animate-marquee whitespace-nowrap">
           <span className="font-extrabold text-lg mx-3">
             🔥 60% OFF on all courses! Limited time only! 🔥
@@ -81,9 +80,8 @@ const Navbar = () => {
           <span className="font-extrabold text-lg mx-3">
             🔥 60% OFF on all courses! Limited time only! 🔥
           </span>
-          {/* Add more if you want even longer loops */}
         </div>
-      </div>
+      </div> */}
 
       {/* --- Navigation Bar --- */}
       <nav className="w-full bg-[#0B132B]/80 backdrop-blur-lg border-b border-gray-800 font-['Inter',_sans-serif]">
