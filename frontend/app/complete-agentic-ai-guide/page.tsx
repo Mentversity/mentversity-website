@@ -2,7 +2,7 @@
 import React from "react";
 import Head from "next/head";
 import ReactMarkdown from "react-markdown";
-import { agenticAIContent, PageContent, ContentSection } from "@/data/aiContent";
+import { agenticAIContent, PageContent, ContentSection } from "@/data/aicontent";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
