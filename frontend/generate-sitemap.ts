@@ -28,7 +28,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Backend API endpoint to get all pages
-const API_PAGES_ENDPOINT = "http://localhost:5000/api/pages"; // change to your backend URL
+const API_PAGES_ENDPOINT = "https://mentversity-website.onrender.com/api/pages"; // change to your backend URL
 
 async function generateSitemap() {
   try {
